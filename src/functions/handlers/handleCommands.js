@@ -10,7 +10,7 @@ module.exports = (client) => {
 
       const { commands, commandArray } = client;
       for (const file of commandFile) {
-        const command = require(`../commands/${folder}/${file}`)
+        const command = require(`../commands/${folder}/${file}`);
         commands.set(command.data.name, command)
         commandArray.push(command.data.toJSON());
       }
