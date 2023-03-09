@@ -13,7 +13,7 @@ module.exports = {
             .setColor('#ff6eb6')
             .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL(), url: 'https://discord.js.org' })
             .setTitle('Ping Result')
-            .setDescription(`⚙️ API ping : ${client.ws.ping}\n\n 📡 Client ping  : ${massage.createdTimestamp - interaction.createdTimestamp}`);
+            .setDescription(`**\`\`\`⚙️ API ping : ${client.ws.ping} ms\n📡 Client ping : ${massage.createdTimestamp - interaction.createdTimestamp} ms\`\`\`**`);
 
         await interaction.editReply({
             embeds: [newMassage]
