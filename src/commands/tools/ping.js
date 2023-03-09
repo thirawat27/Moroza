@@ -1,17 +1,22 @@
-const { SlashCommandBuilder} = require("discord.js")
+const { SlashCommandBuilder,EmbedBuilder} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("ping server"),
+        .setDescription("ตรวจสอบความหน่วง"),
     async execute(interaction, client){
         const massage = await interaction.deferReply({
              fetchReply: true
         });
 
-        const newmassage = `Api Latency: ${client.ws.ping}\nClient ping: ${massage.createdTimestamp - interaction.createdTimestamp}`
+        const newMassage = new EmbedBuilder()
+            .setColor('#ff6eb6')
+            .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL(), url: 'https://discord.js.org' })
+            .setTitle('Ping Result')
+            .setDescription(`⚙️ API ping : ${client.ws.ping}\n\n 📡 Client ping  : ${massage.createdTimestamp - interaction.createdTimestamp}`);
+
         await interaction.editReply({
-            content: newmassage 
+            embeds: [newMassage]
         });
     }    
 }
